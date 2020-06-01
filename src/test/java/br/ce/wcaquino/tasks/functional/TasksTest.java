@@ -32,7 +32,7 @@ public class TasksTest {
 		try {
 			driver.findElement(By.id("addTodo")).click();
 			driver.findElement(By.id("task")).sendKeys("Teste Automático");
-			driver.findElement(By.id("dueDate")).sendKeys("30/05/2020");
+			driver.findElement(By.id("dueDate")).sendKeys("30/05/2021");
 			driver.findElement(By.id("saveButton")).click();
 			
 			String mensagem = driver.findElement(By.id("message")).getText();
