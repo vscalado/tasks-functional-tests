@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -17,9 +17,9 @@ public class TasksTest {
 	
 
 	public WebDriver acessarAplicacao() throws MalformedURLException {
-		//WebDriver driver = new  ChromeDriver();
-		DesiredCapabilities cap = DesiredCapabilities.chrome();
-		WebDriver driver = new RemoteWebDriver(new URL("http://192.168.15.11:4444/wd/hub"), cap);
+		WebDriver driver = new  ChromeDriver();
+		//DesiredCapabilities cap = DesiredCapabilities.chrome();
+		//WebDriver driver = new RemoteWebDriver(new URL("http://192.168.15.11:4444/wd/hub"), cap);
 		driver.navigate().to("http://192.168.15.11:8001/tasks/");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
@@ -98,7 +98,7 @@ public class TasksTest {
 		try {
 			driver.findElement(By.id("addTodo")).click();
 			driver.findElement(By.id("task")).sendKeys("Teste Automático");
-			driver.findElement(By.id("dueDate")).sendKeys("30/05/2020");
+			driver.findElement(By.id("dueDate")).sendKeys("30/05/2021");
 			driver.findElement(By.id("saveButton")).click();
 			
 			String mensagem = driver.findElement(By.id("message")).getText();
@@ -107,6 +107,7 @@ public class TasksTest {
 			//Remove uma tarefa
 			driver.findElement(By.xpath("//a[@class= 'btn btn-outline-danger btn-sm']")).click();
 			mensagem = driver.findElement(By.id("message")).getText();
+			System.out.println(mensagem);
 			Assert.assertEquals("Success!", mensagem);
 		}finally {
 			driver.quit();
